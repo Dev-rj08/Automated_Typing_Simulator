@@ -1,12 +1,21 @@
 import pyautogui
+import pyperclip
 import time
 
-# Text to be typed
-textType = "Have an idea to create a script which simulate typing and inputting stored text "
+# Get the text from the clipboard
+copied_text = pyperclip.paste()
 
-# Delay before starting typing (gives you time to focus on the input field)
+# Get the current cursor position
+cursor_x, cursor_y = pyautogui.position()
+
+# Time to move cursor to the desired location
 time.sleep(5)
 
-# Type out the text
-pyautogui.write(textType, interval=0.1)  # You can adjust the interval between key presses
+# Simulate clicking at the cursor position
+pyautogui.click(cursor_x, cursor_y)
+
+# Simulate typing the copied text
+pyautogui.write(copied_text, interval=0.1)  # You can adjust the interval between key presses
+
+# Press Enter key
 pyautogui.press('enter')
